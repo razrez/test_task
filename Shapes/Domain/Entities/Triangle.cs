@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Shapes.ShapesInterfaces;
+﻿using Shapes.Domain.Common;
+using Shapes.Entities.Interfaces;
 
-namespace Shapes.Shapes
+namespace Shapes.Domain.Entities
 {
-    public class Triangle : ShapeBase, ITriangleCalculator
+    internal class Triangle : BaseShape, ITriangleCalculator
     {
         public double A { get; }
         public double B { get; }
@@ -31,14 +27,17 @@ namespace Shapes.Shapes
 
         public bool IsRightTriangle()
         {
-            var cosAB = CalculateCos(A, B, C);
-            var cosAC = CalculateCos(A, C, B);
-            var cosBC = CalculateCos(B, C, A);
+            var nintyDegree = 90;
+            var angleAB = CosToAngle(CalculateCos(A, B, C));
+            var angleAC = CosToAngle(CalculateCos(A, C, B));
+            var angleBC = CosToAngle(CalculateCos(B, C, A));
 
-            return cosAB == 1 || cosAC == 1 || cosBC == 1;
+            return angleAB == nintyDegree || angleAC == nintyDegree || angleBC == nintyDegree;
         }
 
-        public double CalculateCos(double a, double b, double c) => (a * a + b * b - c * c) / 2 * a * b;
+        private static int CosToAngle(double cos) => (int) Math.Ceiling(Math.Acos(cos) * 180 / Math.PI);
+
+        public double CalculateCos(double a, double b, double c) => (a * a + b * b - c * c) / (2 * a * b);
 
         public double GetPerimeter() => A + B + C;
     }

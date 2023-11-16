@@ -1,10 +1,10 @@
-﻿namespace Shapes
+﻿namespace Shapes.Domain.Common
 {
-    public abstract class ShapeBase
+    public abstract class BaseShape
     {
         public string Name { get; }
 
-        protected ShapeBase(string name)
+        protected BaseShape(string name)
         {
             Name = name;
         }
