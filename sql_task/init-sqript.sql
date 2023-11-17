@@ -1,6 +1,5 @@
 USE master
 GO
-
 IF NOT EXISTS (SELECT name FROM sys.databases WHERE name = N'myDatabase')
 BEGIN
     CREATE DATABASE myDatabase
@@ -26,20 +25,17 @@ CREATE TABLE ProductCategories (
     FOREIGN KEY (CategoryID) REFERENCES Categories(CategoryID)
 );
 
--- заполнение таблицы Products тестовыми данными
 INSERT INTO Products (ProductID, ProductName) VALUES
 (1, 'Product 1'),
 (2, 'Product 2'),
 (3, 'Product 3'),
 (4, 'Product without category');
 
--- заполнение таблицы Categories тестовыми данными
 INSERT INTO Categories (CategoryID, CategoryName) VALUES
 (1, 'Category 1'),
 (2, 'Category 2'),
 (3, 'Category 3');
 
--- заполнение таблицы Products_Categories тестовыми данными
 INSERT INTO ProductCategories (ProductID, CategoryID) VALUES
 (1, 1),
 (1, 2),
