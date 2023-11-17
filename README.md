@@ -1,2 +1,3 @@
 # Тестовое задание для Mindbox
-Запуск тестов из корня папки: ```dotnet build | dotnet test```
+- [Вопрос №2](https://github.com/razrez/test_task/tree/master/shapes_task)
+- [Вопрос №3](https://github.com/razrez/test_task/tree/master/sql_task)
